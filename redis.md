@@ -2,14 +2,23 @@
 单线程，避免线程开销。数据持久化
 
 # 数据结构
-list：rpush（推入最右），lrange（指定范围所有值）、lindex（获取指定位置元素）、lpop（弹出最左值）
-set：sadd、smembers（返回所有元素）、sismember（是否存在）、srem（移除）
-hash：hset、hget、hgetall、hdel
-zset：
+String：get、set、del、INCR
+普通使用、点赞自增等
 
-# 使用场景
-微博点赞数用自增
-微博消息列表
+list：rpush（推入最右），lrange（指定范围所有值）、lindex（获取指定位置元素）、lpop（弹出最左值）
+用于消息队列。用户收到的最新评论、最新消息
+
+set：sadd、smembers（返回所有元素）、sismember（是否存在）、srem（移除）
+用于去重，交集，并集等运算
+
+hash：hset、hget、hgetall、hdel
+用于用户信息存储，
+
+zset（sort set有序集合）：zadd、zrange、zrem、zincrby... 带分数操作，可以排序
+排行榜zrank，列表排序
+
+expireat key tim
+redis 可以给key加上过期时间
 
 # RDB 
 https://zackku.com/redis-rdb-aof/
