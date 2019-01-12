@@ -48,7 +48,26 @@ AOF，文件追加，操作日志记录。默认关闭。加载时相当于重�
 # 不小心flushall操作
 马上执行shutdown nosave，避免redis aof重写。然后马上加载恢复aof文件
 
-# Sentinel
+# Sentinel——哨兵模式
+https://zackku.com/redis-sentinel/
+用于故障转移。
 
+1. 把Redis用Sentinel的模式启动，并初始化
+2. 读配置，初始化sentienl master属性，主要是主库信息
+3. 向主库建立链接。一条命令链接，一条订阅链接
+4. 默认10秒一次向主库发消息，获取主库以及对应从库消息
+5. 发现从库，则和从库同样建立两个链接
+6. 默认两秒一次对频道发送自身sentinel和主库信息
+7. 因为sentinel也订阅了hello频道，所以会发现其他sentinel，然后与其创建对应链接。
+故障后
+8. 默认一秒一次监控主从是否没回复，若没回复，则Sentinel自己将其主观下线
+9. 询问其他sentinel是否认为也下线，投票数可配。超过则客观下线
+10. 选举一个sentinel leader来执行故障转移
+11. 按照库优先级、偏移量、id等选出主库。调用SLAVEOF no one升级为master
+12. 让其他从库复制新主库
+13. 后面旧主库上线后，变成新主库的从库
 
-# 集群Cluster
+# 分片集群Cluster 
+
+# 一致性哈希算法
+
