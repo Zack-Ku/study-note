@@ -67,7 +67,15 @@ https://zackku.com/redis-sentinel/
 12. 让其他从库复制新主库
 13. 后面旧主库上线后，变成新主库的从库
 
-# 分片集群Cluster 
-
 # 一致性哈希算法
+把实例的hash值作为节点，把hash值顺延到最近一个节点上出力。
+缺点就是如果实例hash分配不均会导致过多请求hash进入到某些实例上
+
+# 分片集群Cluster
+https://zackku.com/redis-cluster/
+采用槽位分配，16384个哈希槽位。需要手工配完槽位才能正常工作。
+
+cluster meet 与其他服务连接。
+
+
 
