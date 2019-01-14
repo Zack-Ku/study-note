@@ -53,7 +53,16 @@ sleep()**不会释放锁**，不需要sync块中。进入阻塞，退出CPU时�
 运行 sleep()、suspend() -> 阻塞
 阻塞 resume() -> 就绪
 
-# 重量级锁、偏向锁、
+# 悲观/乐观锁、重量级/轻量级/偏向锁
+https://zackku.com/java-thread-lock-base/
+悲观锁：认为写多读少，每次读写操作都上锁。
+乐观锁：认为读多些少，写时才上锁。
+重量级锁：悲观锁的一种，1.6以前synchronized 用monitorenter和monitorexit。多个线程同时进入临界区
+轻量级锁：判断是否有锁、无锁则判断记录。有锁通过自旋CAS尝试获取锁（对比Mark Word），然后锁膨胀为重量级锁，因为需要锁同时读写。多个线程交替进入临界区
+偏向锁：不存在竞争情况的锁，当偏向改变，则升级为轻量级锁。仅有一个线程进入临界区
 
-# countdowmlatch，cyclebarrier，semaphore
+# CountDownLatch、CycleBarrier、Semaphore————同步辅助
+CountDownLatch：计数地等待线程数结束
+CycleBarrier：栅栏。设置目的点，等待其他线程到底目的点
+Semaphore：信号量。控制资源被获取数，每次获取acquire()、释放release()。
 
