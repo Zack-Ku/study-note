@@ -11,13 +11,18 @@ https://mp.weixin.qq.com/s/__ZnkPAF6ucUqN8CVSVQeA
 容器超过75%的时候，会扩容两倍，重排。
 
 # 红黑树
+平衡二叉树
+特性：
 1. 每个节点非红即黑
 2. 根节点总是黑色的
 3. 如果节点是红色的，则它的子节点必须是黑色的（反之不一定）
 4. 每个叶子节点都是黑色的空节点（NIL节点）
 5. 从根节点到叶节点或空子节点的每条路径，必须包含相同数目的黑色节点（即相同的黑色高度）
 
-# TreeMap、LinkedHashMap
+# TreeMap、LinkedHashMap——有序
+https://www.cnblogs.com/xiaoxi/p/6170590.html
+TreeMap：红黑树的实现，按key值排序
+LinkedHashMap：HashMap+LinkedList。链表部分维护多一个双向链表，保持插入有序
 
 # HashTable
 sychronized加锁，线程安全，低效。
@@ -69,3 +74,5 @@ CountDownLatch：计数地等待线程数结束
 CycleBarrier：栅栏。设置目的点，等待其他线程到底目的点
 Semaphore：信号量。控制资源被获取数，每次获取acquire()、释放release()。
 
+# transient关键词 
+标注成员变量，避免序列化
