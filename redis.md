@@ -17,6 +17,8 @@ hash：hset、hget、hgetall、hdel
 zset（sort set有序集合）：zadd、zrange、zrem、zincrby... 带分数操作，可以排序
 排行榜zrank，列表排序
 
+geo：经纬度
+
 expireat key tim
 redis 可以给key加上过期时间
 
@@ -77,5 +79,11 @@ https://zackku.com/redis-cluster/
 
 cluster meet 与其他服务连接。
 
+# 缓存穿透、雪崩等问题
+缓存穿透：请求缓存不存在的数据，落到db上。
+解决：1.用互斥锁排队，对缓存为空的key加锁；2.布隆过滤器，立即找出是否存在
+
+缓存雪崩：缓存在同一时间大量键失效，然后同时一瞬间来大量请求落到db中
+解决：1.同上加锁排队；2.备份缓存，一份超时A,一份不超时B，A失效则读B，然后同时更新AB；3.随机加上超时时间，避免同一时间失效
 
 

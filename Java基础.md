@@ -17,6 +17,8 @@ https://mp.weixin.qq.com/s/__ZnkPAF6ucUqN8CVSVQeA
 4. 每个叶子节点都是黑色的空节点（NIL节点）
 5. 从根节点到叶节点或空子节点的每条路径，必须包含相同数目的黑色节点（即相同的黑色高度）
 
+# TreeMap、LinkedHashMap
+
 # HashTable
 sychronized加锁，线程安全，低效。
 
@@ -46,6 +48,7 @@ notify是唤醒单个，但不确定是哪个。notifyAll()唤醒全部
 
 # interrupt()、sleep()... ——Thread类中
 sleep()**不会释放锁**，不需要sync块中。进入阻塞，退出CPU时间、不占用cpu时间。CPU时间后，进入就绪态、开始竞争CPU时间。
+interrupt()，给线程发送中断信号。
 
 # 线程的生命周期
 新建 -> 就绪 -> 运行 -> 死亡
