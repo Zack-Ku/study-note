@@ -27,6 +27,7 @@ redis 可以给key加上过期时间
 
 # RDB 
 https://zackku.com/redis-rdb-aof/
+
 RDB，全量数据快照。SAVE/BGSAVE 或 有Key变更后定时执行。默认打开
 SAVE会阻塞进程，推荐BGSAVE fork一个新进程，但会消耗更多内存。
 
@@ -55,6 +56,7 @@ AOF，文件追加，操作日志记录。默认关闭。加载时相当于重�
 
 # Sentinel——哨兵模式
 https://zackku.com/redis-sentinel/
+
 用于故障转移。
 
 1. 把Redis用Sentinel的模式启动，并初始化
@@ -78,6 +80,7 @@ https://zackku.com/redis-sentinel/
 
 # 分片集群Cluster
 https://zackku.com/redis-cluster/
+
 采用槽位分配，16384个哈希槽位。需要手工配完槽位才能正常工作。
 
 cluster meet 与其他服务连接。
