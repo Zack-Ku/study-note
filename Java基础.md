@@ -72,3 +72,5 @@ Semaphore：信号量。控制资源被获取数，每次获取acquire()、释�
 
 # transient关键词 
 标注成员变量，避免序列化
+
+# 反射
